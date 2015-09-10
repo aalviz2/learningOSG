@@ -1,0 +1,16 @@
+all: vuic
+
+vuic: vuic.cpp BuildingLoader.o hud.o StartMenu.o
+	g++ -Wall vuic.cpp BuildingLoader.o hud.o StartMenu.o -losg -losgViewer -losgGA -losgDB -losgWidget -lFirstPersonController -o vuic
+
+BuildingLoader.o: BuildingLoader.cpp BuildingLoader.h
+	g++ -Wall -c BuildingLoader.cpp -o BuildingLoader.o
+
+hud.o: hud.cpp hud.h
+	g++ -Wall -c hud.cpp -o hud.o
+
+StartMenu.o: StartMenu.cpp StartMenu.h
+	g++ -Wall -c StartMenu.cpp -o StartMenu.o 
+
+clean:
+	rm -rf *.o vuic
